@@ -1,10 +1,19 @@
 <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="newItem" (keyup.enter)="addItem()">
-    <button class="btn btn-primary" (click)="addItem()">Dodaj</button>
+        <input type="text" class="form-control" [(ngModel)]="newItem" (keyup.enter)="addItem()">
+        <div class="btn-group mt-3">
+            <button class="btn btn-primary btn-primary" (click)="addItem()">Dodaj</button>
+            <button class="btn btn-secondary btn-primary" (click)="sortNamesAlphabetical()">Sortuj Według Nazwy</button>
+        </div>
 </div>
 
-<ul class="list-group mt-5">
+
+<ul class="list-group mt-3">
     <li class="list-group-item" *ngFor="let item of todoItems">
-        <app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)"></app-to-do-item>
+        <div *ngIf="item.taskStatus == 'Niewykonano'">
+            <app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)" (itemStatusToChange)="changeItemStatus($event)"></app-to-do-item>
+        </div>
+        <div *ngIf="item.taskStatus == 'Wykonano'">
+            <s><app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)" (itemStatusToChange)="changeItemStatus($event)"></app-to-do-item></s>
+        </div>
     </li>
 </ul>

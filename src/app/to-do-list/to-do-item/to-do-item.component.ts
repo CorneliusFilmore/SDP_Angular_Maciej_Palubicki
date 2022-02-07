@@ -10,8 +10,18 @@ export class ToDoItemComponent {
   @Input() todoItem!: ToDoItem;
 
   @Output() itemToDelete: EventEmitter<ToDoItem> = new EventEmitter();
+  @Output() itemStatusToChange: EventEmitter<ToDoItem> = new EventEmitter();
 
   deleteItem(): void {
     this.itemToDelete.emit(this.todoItem);
+  }
+
+  changeItemStatus(): void {
+    if(this.todoItem.taskStatus=="Wykonano") {
+      this.todoItem.taskStatus="Niewykonano";
+    }else {
+      this.todoItem.taskStatus="Wykonano";
+    }
+    this.itemStatusToChange.emit(this.todoItem)
   }
 }

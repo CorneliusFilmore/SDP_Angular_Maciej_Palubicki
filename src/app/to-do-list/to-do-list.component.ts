@@ -11,11 +11,19 @@ export class ToDoListComponent {
   todoItems:ToDoItem[] = TO_DO_ITEMS;
 
   addItem():void {
-    this.todoItems.push({ text: this.newItem });
+    this.todoItems.push({ text: this.newItem, taskStatus: "Niewykonano"});
     this.newItem = "";
   }
 
   removeItem(item: ToDoItem): void {
     this.todoItems = this.todoItems.filter(e => e.text !== item.text);
+  }
+
+  sortNamesAlphabetical(): void {
+    this.todoItems.sort((x,y) => x.text.toLowerCase().localeCompare(y.text.toLowerCase()));
+  }
+
+  changeItemStatus(item: ToDoItem): void {
+    
   }
 }
