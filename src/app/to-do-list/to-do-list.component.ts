@@ -8,18 +8,19 @@ import { ToDoItem, TO_DO_ITEMS } from '../mocked-data';
 })
 export class ToDoListComponent {
   newItem:string = "Nowy Element";
-  todoItems:ToDoItem[] = TO_DO_ITEMS;
+  static todoItems:ToDoItem[] = TO_DO_ITEMS;
 
   removeItem(item: ToDoItem): void {
-    this.todoItems = this.todoItems.filter(e => e.text !== item.text);
+    ToDoListComponent.todoItems = ToDoListComponent.todoItems.filter(e => e.text !== item.text);
   }
 
   sortNamesAlphabetical(): void {
-    this.todoItems.sort((x,y) => x.text.toLowerCase().localeCompare(y.text.toLowerCase()));
+    ToDoListComponent.todoItems.sort((x,y) => x.text.toLowerCase().localeCompare(y.text.toLowerCase()));
   }
 
-  changeItemStatus(item: ToDoItem): void {
-    
-  }
+  changeItemStatus(item: ToDoItem): void {}
 
+  getToDoItems(): ToDoItem[] {
+    return ToDoListComponent.todoItems
+  }
 }

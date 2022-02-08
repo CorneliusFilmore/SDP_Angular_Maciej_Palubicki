@@ -13,7 +13,6 @@ export class ToDoItemComponent {
   @Output() itemStatusToChange: EventEmitter<ToDoItem> = new EventEmitter();
 
   newItem:string = "Nowy Element";
-  todoItems:ToDoItem[] = TO_DO_ITEMS;
 
   deleteItem(): void {
     this.itemToDelete.emit(this.todoItem);
