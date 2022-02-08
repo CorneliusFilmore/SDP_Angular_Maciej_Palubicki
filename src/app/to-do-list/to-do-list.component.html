@@ -1,10 +1,21 @@
 <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="newItem" (keyup.enter)="addItem()">
-    <button class="btn btn-primary" (click)="addItem()">Dodaj</button>
+    <app-to-do-input-field></app-to-do-input-field>      
 </div>
 
-<ul class="list-group mt-5">
-    <li class="list-group-item" *ngFor="let item of todoItems">
-        <app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)"></app-to-do-item>
+<ul class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let item of getToDoItems()">
+        <div *ngIf="item.taskStatus == 'Niewykonano'">
+            <app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)" (itemStatusToChange)="changeItemStatus($event)"></app-to-do-item>
+        </div>
+        <div *ngIf="item.taskStatus == 'Wykonano'">
+            <s><app-to-do-item [todoItem]="item" (itemToDelete)="removeItem($event)" (itemStatusToChange)="changeItemStatus($event)"></app-to-do-item></s>
+        </div>
     </li>
 </ul>
+
+<div class="button-group mt-3">
+    <button class="btn btn-primary mr-4" (click)="sortNamesAlphabetical()">Sortuj Według Nazwy</button>  
+    
+    <button class="btn btn-primary" (click)="sortByCategory()">Sortuj Według Kategorii</button>  
+    <button class="btn btn-primary" (click)="sortByStatus()">Sortuj Według Statusu</button>
+</div>
