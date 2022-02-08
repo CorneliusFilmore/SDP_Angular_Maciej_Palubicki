@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ToDoItem } from 'src/app/mocked-data';
+import { ToDoItem, TO_DO_ITEMS } from 'src/app/mocked-data';
 
 @Component({
   selector: 'app-to-do-item',
@@ -12,11 +12,14 @@ export class ToDoItemComponent {
   @Output() itemToDelete: EventEmitter<ToDoItem> = new EventEmitter();
   @Output() itemStatusToChange: EventEmitter<ToDoItem> = new EventEmitter();
 
+  newItem:string = "Nowy Element";
+  todoItems:ToDoItem[] = TO_DO_ITEMS;
+
   deleteItem(): void {
     this.itemToDelete.emit(this.todoItem);
   }
 
-  changeItemStatus(): void {
+  changeStatusOfItem(): void {
     if(this.todoItem.taskStatus=="Wykonano") {
       this.todoItem.taskStatus="Niewykonano";
     }else {

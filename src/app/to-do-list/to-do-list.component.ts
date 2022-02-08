@@ -10,11 +10,6 @@ export class ToDoListComponent {
   newItem:string = "Nowy Element";
   todoItems:ToDoItem[] = TO_DO_ITEMS;
 
-  addItem():void {
-    this.todoItems.push({ text: this.newItem, taskStatus: "Niewykonano"});
-    this.newItem = "";
-  }
-
   removeItem(item: ToDoItem): void {
     this.todoItems = this.todoItems.filter(e => e.text !== item.text);
   }
@@ -26,4 +21,5 @@ export class ToDoListComponent {
   changeItemStatus(item: ToDoItem): void {
     
   }
+
 }
