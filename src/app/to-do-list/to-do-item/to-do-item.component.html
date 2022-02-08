@@ -3,7 +3,16 @@
     {{todoItem.text}}
     </div>
     <div>
-        {{todoItem.taskStatus}}
+        <button type="button" class="btn btn-outline-primary" disabled>Kategoria: {{todoItem.category}}</button>
+        
+    </div>
+    <div>
+        <div *ngIf="todoItem.taskStatus == 'Wykonano'">
+            <button type="button" class="btn btn-outline-success" disabled>Status: {{todoItem.taskStatus}}</button>
+        </div>
+        <div *ngIf="todoItem.taskStatus == 'Niewykonano'">
+            <button type="button" class="btn btn-outline-danger" disabled>Status: {{todoItem.taskStatus}}</button>
+        </div>
     </div>
     <div>
         <button class="btn btn-info" (click)="changeStatusOfItem()">Status</button>

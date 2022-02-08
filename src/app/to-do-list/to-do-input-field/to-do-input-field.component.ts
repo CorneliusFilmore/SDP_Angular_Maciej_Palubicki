@@ -9,12 +9,13 @@ import { ToDoListComponent } from '../to-do-list.component';
 })
 export class ToDoInputFieldComponent {
   newItem:string = "Nowy Element";
+  newCategory:string = "Nowa Kategoria"
   
   
   @Input() todoItem!:ToDoItem;
   
   addNewItem():void {
-    ToDoListComponent.todoItems.push({ text: this.newItem, taskStatus: "Niewykonano"});
+    ToDoListComponent.todoItems.push({ text: this.newItem, taskStatus: "Niewykonano", category: this.newCategory});
     this.newItem = "";
   }
 }

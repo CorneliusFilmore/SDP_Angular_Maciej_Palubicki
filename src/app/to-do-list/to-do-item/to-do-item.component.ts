@@ -12,8 +12,6 @@ export class ToDoItemComponent {
   @Output() itemToDelete: EventEmitter<ToDoItem> = new EventEmitter();
   @Output() itemStatusToChange: EventEmitter<ToDoItem> = new EventEmitter();
 
-  newItem:string = "Nowy Element";
-
   deleteItem(): void {
     this.itemToDelete.emit(this.todoItem);
   }

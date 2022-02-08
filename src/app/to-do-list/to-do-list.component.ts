@@ -18,6 +18,14 @@ export class ToDoListComponent {
     ToDoListComponent.todoItems.sort((x,y) => x.text.toLowerCase().localeCompare(y.text.toLowerCase()));
   }
 
+  sortByCategory(): void {
+    ToDoListComponent.todoItems.sort((x,y) => x.category.toLowerCase().localeCompare(y.category.toLowerCase()));
+  }
+
+  sortByStatus(): void {
+    ToDoListComponent.todoItems.sort((x,y) => x.taskStatus.toLowerCase().localeCompare(y.taskStatus.toLowerCase()));
+  }
+
   changeItemStatus(item: ToDoItem): void {}
 
   getToDoItems(): ToDoItem[] {
